@@ -1,0 +1,49 @@
+// Platform
+// Copyright (c) 2024 Grigore Stefan <g_stefan@yahoo.com>
+// MIT License (MIT) <http://opensource.org/licenses/MIT>
+// SPDX-FileCopyrightText: 2024 Grigore Stefan <g_stefan@yahoo.com>
+// SPDX-License-Identifier: MIT
+
+#ifndef XYO_PLATFORM_LIBRARY_RH
+#define XYO_PLATFORM_LIBRARY_RH
+
+// clang-format off
+#define XYO_PLATFORM_VERSION_INFO(versionName,appName,description) \
+	1 VERSIONINFO\
+	FILEVERSION versionName##_VERSION_ABCD\
+	PRODUCTVERSION versionName##_VERSION_ABCD\
+	{\
+		BLOCK "StringFileInfo"\
+		{\
+			BLOCK "040904E4"\
+			{\
+				VALUE "CompanyName", versionName##_COMPANY "\000"\
+				VALUE "FileDescription", description "\000"\
+				VALUE "FileVersion", versionName##_VERSION_STR "\000"\
+				VALUE "InternalName", appName "\000"\
+				VALUE "LegalCopyright", versionName##_COPYRIGHT "\000"\
+				VALUE "ProductName", description "\000"\
+				VALUE "ProductVersion", versionName##_VERSION_STR "\000"\
+				VALUE "OriginalFilename", appName "\000"\
+				VALUE "Copyright", versionName##_COPYRIGHT "\000"\
+				VALUE "Contact", versionName##_CONTACT "\000"\
+				VALUE "Company", versionName##_COMPANY "\000"\
+				VALUE "Publisher", versionName##_PUBLISHER "\000"\
+				VALUE "Build", versionName##_VERSION_STR_BUILD  "\000"\
+				VALUE "BuildDate",versionName##_VERSION_STR_DATETIME "\000"\
+			}\
+		}\
+		BLOCK "VarFileInfo"\
+		{\
+			VALUE "Translation", 0x409, 1252\
+		}\
+	}
+
+#ifdef XYO_PLATFORM_COMPILE_DYNAMIC_LIBRARY
+#	define XYO_PLATFORM_MANIFEST(fileName) 2 24 fileName
+#else
+#	define XYO_PLATFORM_MANIFEST(fileName) 1 24 fileName
+#endif
+// clang-format on
+
+#endif

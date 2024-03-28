@@ -1,0 +1,27 @@
+{
+	"solution": {
+		"name" : "xyo-platform",
+		"type" : "xyo-cpp",
+		"projects": [
+			{
+				"name" : "xyo-platform",
+				"make" : "lib-and-dll",
+				"category" : "make",
+				"SPDX-License-Identifier": "MIT",
+				"sourcePath" : [
+					"XYO/Platform"
+					"XYO/Platform/Multithreading"
+				]
+			},
+			{
+				"name" : "test.01",
+				"make" : "exe.static",
+				"category" : "test",
+				"SPDX-License-Identifier": "Unlicense",
+				"dependency" : [
+					"xyo-platform"
+				]
+			}
+		]
+	}
+}

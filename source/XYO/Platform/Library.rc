@@ -1,0 +1,11 @@
+// Platform
+// Copyright (c) 2024 Grigore Stefan <g_stefan@yahoo.com>
+// MIT License (MIT) <http://opensource.org/licenses/MIT>
+// SPDX-FileCopyrightText: 2024 Grigore Stefan <g_stefan@yahoo.com>
+// SPDX-License-Identifier: MIT
+
+#include <XYO/Platform/Library.rh>
+#include <XYO/Platform/Copyright.rh>
+#include <XYO/Platform/Version.rh>
+
+XYO_PLATFORM_VERSION_INFO(XYO_PLATFORM,"xyo-platform.dll","XYO Platform")
