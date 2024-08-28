@@ -1,64 +1,66 @@
 {
-    "version": 4,
-    "configurations": [
-        {
-            "name": "Win32",
-            "intelliSenseMode": "msvc-x64",
-            "includePath": [
-                "${workspaceRoot}/source",
-                "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.37.32822/atlmfc/include",
-                "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.37.32822/include",
-                "C:/Program Files (x86)/Windows Kits/NETFXSDK/4.8/include/um",
-                "C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt",
-                "C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared",
-                "C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/um",
-                "C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/winrt"
-            ],
-            "defines": [
-                "XYO_PLATFORM_OS_WINDOWS",
-                "XYO_PLATFORM_COMPILER_MSVC",
-                "XYO_PLATFORM_64BIT",
-                "XYO_PLATFORM_MULTI_THREAD"
-            ],
-            "browse": {
-                "path": [                    
-                    "${workspaceRoot}/source",
-                    "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.37.32822/atlmfc/include",
-                    "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.37.32822/include",
-                    "C:/Program Files (x86)/Windows Kits/NETFXSDK/4.8/include/um",
-                    "C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt",
-                    "C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared",
-                    "C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/um",
-                    "C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/winrt"
-                ],
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
-            },
-            "cStandard": "c11",
-            "cppStandard": "c++17",
-            "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.37.32822/bin/Hostx64/x64/cl.exe"
-        },
-        {
-            "name": "linux",
-            "intelliSenseMode": "gcc-x64",
-            "includePath": [                
-                "${workspaceRoot}/source"
-            ],
-            "defines": [
-                "XYO_PLATFORM_OS_LINUX",
-                "XYO_PLATFORM_COMPILER_GCC",
-                "XYO_PLATFORM_64BIT",
-                "XYO_PLATFORM_MULTI_THREAD"
-            ],
-            "browse": {
-                "path": [                    
-                    "${workspaceRoot}/source"
-                ],
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
-            },
-            "cStandard": "c11",
-            "cppStandard": "c++17"
-        }
-    ]
+	"version": 4,
+	"configurations": [
+		{
+			"name": "Win32",
+			"intelliSenseMode": "msvc-x64",
+			"includePath": [
+				"${workspaceRoot}/source",
+				"C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.40.33807/atlmfc/include",
+				"C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.40.33807/include",
+				"C:/Program Files (x86)/Windows Kits/NETFXSDK/4.8/include/um",
+				"C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt",
+				"C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared",
+				"C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/um",
+				"C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/winrt"
+			],
+			"defines": [
+				"XYO_PLATFORM_OS_WINDOWS",
+				"XYO_PLATFORM_COMPILER_MSVC",
+				"XYO_PLATFORM_64BIT",
+				"XYO_PLATFORM_MULTI_THREAD",
+				"XYO_PLATFORM_RUNTIME_DYNAMIC",
+				"XYO_PLATFORM_BUILD_RELEASE"
+			],
+			"browse": {
+				"path": [
+					"${workspaceRoot}/source",
+					"C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.40.33807/atlmfc/include",
+					"C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.40.33807/include",
+					"C:/Program Files (x86)/Windows Kits/NETFXSDK/4.8/include/um",
+					"C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt",
+					"C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared",
+					"C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/um",
+					"C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/winrt"
+				],
+				"limitSymbolsToIncludedHeaders": true,
+				"databaseFilename": ""
+			},
+			"cStandard": "c11",
+			"cppStandard": "c++17",
+			"compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.40.33807/bin/Hostx64/x64/cl.exe"
+		},
+		{
+			"name": "linux",
+			"intelliSenseMode": "gcc-x64",
+			"includePath": [
+				"${workspaceRoot}/source"
+			],
+			"defines": [
+				"XYO_PLATFORM_OS_LINUX",
+				"XYO_PLATFORM_COMPILER_GCC",
+				"XYO_PLATFORM_64BIT",
+				"XYO_PLATFORM_MULTI_THREAD"
+			],
+			"browse": {
+				"path": [
+					"${workspaceRoot}/source"
+				],
+				"limitSymbolsToIncludedHeaders": true,
+				"databaseFilename": ""
+			},
+			"cStandard": "c11",
+			"cppStandard": "c++17"
+		}
+	]
 }

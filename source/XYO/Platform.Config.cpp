@@ -91,7 +91,7 @@ void configEnable(string what) {
 	configMap.insert(pair<string, string>(toFind, toReplace));
 };
 
-void configSetPlatform(string value) {
+void configSetPlatformName(string value) {
 	string toFind;
 	string toReplace;
 
@@ -143,17 +143,12 @@ int main(int cmdN, char *cmdS[]) {
 	configEnable("XYO_PLATFORM_MULTI_THREAD");
 #endif
 
-// -- Platform
+// -- Platform Name
 #define XYO_PLATFORM_NAME_STR_B(X) #X
 #define XYO_PLATFORM_NAME_STR_A(X) XYO_PLATFORM_NAME_STR_B(X)
 #define XYO_PLATFORM_NAME_STR XYO_PLATFORM_NAME_STR_A(XYO_PLATFORM_NAME)
 
-	configSetPlatform(XYO_PLATFORM_NAME_STR);
-
-// -- System
-#ifdef XYO_PLATFORM_64BIT
-	configEnable("XYO_PLATFORM_64BIT");
-#endif
+	configSetPlatformName(XYO_PLATFORM_NAME_STR);
 
 	if (!fileReplaceLine(configFileIn, configFileCheck, configMap)) {
 		cout << "Platform - Configuration check error\n";
