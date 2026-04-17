@@ -1,7 +1,7 @@
 // Platform Configuration
 // Created by Grigore Stefan <g_stefan@yahoo.com>
 // Public domain (Unlicense) <http://unlicense.org>
-// SPDX-FileCopyrightText: 2024-2025 Grigore Stefan <g_stefan@yahoo.com>
+// SPDX-FileCopyrightText: 2024-2026 Grigore Stefan <g_stefan@yahoo.com>
 // SPDX-License-Identifier: Unlicense
 
 #include <iostream>
@@ -117,6 +117,9 @@ int main(int cmdN, char *cmdS[]) {
 #endif
 #ifdef XYO_PLATFORM_OS_MINGW
 	configEnable("XYO_PLATFORM_OS_MINGW");
+#endif
+#ifdef XYO_PLATFORM_OS_EMSCRIPTEN
+	configEnable("XYO_PLATFORM_OS_EMSCRIPTEN");
 #endif
 
 // -- Compiler

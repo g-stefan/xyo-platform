@@ -1,7 +1,7 @@
 // Platform
-// Copyright (c) 2024-2025 Grigore Stefan <g_stefan@yahoo.com>
+// Copyright (c) 2024-2026 Grigore Stefan <g_stefan@yahoo.com>
 // MIT License (MIT) <http://opensource.org/licenses/MIT>
-// SPDX-FileCopyrightText: 2024-2025 Grigore Stefan <g_stefan@yahoo.com>
+// SPDX-FileCopyrightText: 2024-2026 Grigore Stefan <g_stefan@yahoo.com>
 // SPDX-License-Identifier: MIT
 
 #ifndef XYO_PLATFORM_CONFIG_HPP
@@ -11,6 +11,7 @@
 // #define XYO_PLATFORM_OS_WINDOWS
 // #define XYO_PLATFORM_OS_LINUX
 // #define XYO_PLATFORM_OS_MINGW
+// #define XYO_PLATFORM_OS_EMSCRIPTEN
 
 // -- Compiler
 // #define XYO_PLATFORM_COMPILER_MSVC
