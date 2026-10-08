@@ -22,7 +22,11 @@
 namespace XYO::Platform::Multithreading::Processor {
 
 	int32_t getCount() {
-		return sysconf(_SC_NPROCESSORS_ONLN);
+		int32_t value = sysconf(_SC_NPROCESSORS_ONLN);
+		if (value > 1) {
+			return value;
+		};
+		return 1;
 	};
 
 };

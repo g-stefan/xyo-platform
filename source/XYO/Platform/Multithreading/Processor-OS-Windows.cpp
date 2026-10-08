@@ -18,7 +18,11 @@
 namespace XYO::Platform::Multithreading::Processor {
 
 	int32_t getCount() {
-		return GetActiveProcessorCount(ALL_PROCESSOR_GROUPS);
+		int32_t value = GetActiveProcessorCount(ALL_PROCESSOR_GROUPS);
+		if (value > 1) {
+			return value;
+		};
+		return 1;
 	};
 
 };

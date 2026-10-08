@@ -5,6 +5,7 @@
 // SPDX-License-Identifier: MIT
 
 #include <XYO/Platform/Dependency.hpp>
+#include <XYO/Platform/Multithreading/TAtomic.hpp>
 #include <XYO/Platform/Multithreading/Thread.hpp>
 
 #ifdef XYO_PLATFORM_OS_WINDOWS
@@ -17,6 +18,9 @@
 namespace XYO::Platform::Multithreading::Thread {
 
 	void sleep(int milliSeconds) {
+		if (milliSeconds < 0) {
+			return;
+		};
 		Sleep(milliSeconds);
 	};
 
@@ -34,17 +38,24 @@ namespace XYO::Platform::Multithreading {
 			// ---
 			DWORD id;
 			HANDLE thread;
+			// ---
+			TAtomic<bool> isRunning;
+			bool joinable;
 	};
 
-	static DWORD WINAPI threadProcedure_(Thread_ *thread) {
+	static DWORD WINAPI threadProcedure_(void *thread_) {
+		Thread_ *thread = static_cast<Thread_ *>(thread_);
 		if (thread->before != nullptr) {
 			(*thread->before)();
 		};
-		(*thread->procedure)(thread->this_);
+		try {
+			(*thread->procedure)(thread->this_);
+		} catch (...) {
+		}
 		if (thread->after != nullptr) {
 			(*thread->after)();
 		};
-		thread->id = 0;
+		thread->isRunning.set(false);
 		return 0L;
 	};
 
@@ -56,6 +67,8 @@ namespace XYO::Platform::Multithreading {
 		thread->after = nullptr;
 		thread->id = 0;
 		thread->thread = nullptr;
+		thread->isRunning.set(false);
+		thread->joinable = false;
 	};
 
 	Thread::~Thread() {
@@ -64,11 +77,14 @@ namespace XYO::Platform::Multithreading {
 	};
 
 	void Thread::join() {
-		if (thread->id) {
+		if (thread->joinable) {
 			WaitForSingleObject(thread->thread, INFINITE);
 			CloseHandle(thread->thread);
+			thread->thread = nullptr;
 			thread->id = 0;
+			thread->joinable = false;
 		};
+		thread->isRunning.set(false);
 	};
 
 	bool Thread::start(ThreadProcedure procedure, void *this_, ThreadProcess before, ThreadProcess after) {
@@ -79,21 +95,24 @@ namespace XYO::Platform::Multithreading {
 		thread->before = before;
 		thread->after = after;
 
-		thread->thread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)threadProcedure_, thread, 0, &thread->id);
+		thread->isRunning.set(true);
+		thread->thread = CreateThread(nullptr, 0, threadProcedure_, thread, 0, &thread->id);
 		if (thread->thread != nullptr) {
+			thread->joinable = true;
 			return true;
 		};
+		thread->isRunning.set(false);
 		return false;
 	};
 
 	bool Thread::isRunning() {
-		if (thread->id) {
-			return true;
-		};
-		return false;
+		return thread->isRunning.get();
 	};
 
 	void Thread::sleep(int milliSeconds) {
+		if (milliSeconds < 0) {
+			return;
+		};
 		Sleep(milliSeconds);
 	};
 

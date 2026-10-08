@@ -18,6 +18,7 @@
 namespace XYO::Platform::Multithreading {
 
 	class CriticalSection_;
+	class ConditionVariable;
 
 	class CriticalSection {
 			XYO_PLATFORM_DISALLOW_COPY_ASSIGN_MOVE(CriticalSection);
@@ -25,15 +26,16 @@ namespace XYO::Platform::Multithreading {
 		protected:
 			CriticalSection_ *criticalSection;
 
+			// OS object, CRITICAL_SECTION * / pthread_mutex_t *,
+			// internal, for ConditionVariable
+			friend class ConditionVariable;
+			void *getNative_();
+
 		public:
 			static const bool isCriticalSection = true;
 
 			XYO_PLATFORM_EXPORT CriticalSection();
-#	ifdef XYO_PLATFORM_OS_LINUX
-			XYO_PLATFORM_EXPORT ~CriticalSection() noexcept(false);
-#	else
 			XYO_PLATFORM_EXPORT ~CriticalSection();
-#	endif
 
 			XYO_PLATFORM_EXPORT void enter();
 			XYO_PLATFORM_EXPORT void leave();
@@ -43,7 +45,7 @@ namespace XYO::Platform::Multithreading {
 #endif
 
 #ifdef XYO_PLATFORM_SINGLE_THREAD
-namespace XYO::Platform {
+namespace XYO::Platform::Multithreading {
 
 	class CriticalSection {
 			XYO_PLATFORM_DISALLOW_COPY_ASSIGN_MOVE(CriticalSection);
@@ -53,9 +55,9 @@ namespace XYO::Platform {
 
 			CriticalSection() = default;
 
-			inline void enter(){};
+			inline void enter() {};
 
-			inline void leave(){};
+			inline void leave() {};
 	};
 
 };

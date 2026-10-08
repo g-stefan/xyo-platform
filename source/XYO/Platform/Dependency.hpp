@@ -12,6 +12,7 @@
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
+#include <climits>
 #include <string>
 #include <typeinfo>
 #include <utility>
@@ -141,7 +142,11 @@
 
 #ifdef XYO_PLATFORM_64BIT
 #	ifdef XYO_PLATFORM_COMPILER_GCC
-#		define XYO_PLATFORM_FORMAT_SIZET "%lu"
+#		ifdef XYO_PLATFORM_OS_MINGW
+#			define XYO_PLATFORM_FORMAT_SIZET "%zu"
+#		else
+#			define XYO_PLATFORM_FORMAT_SIZET "%lu"
+#		endif
 #	else
 #		define XYO_PLATFORM_FORMAT_SIZET "%llu"
 #	endif

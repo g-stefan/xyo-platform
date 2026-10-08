@@ -27,9 +27,8 @@ bool fileReplaceLine(string fileIn_, string fileOut_, map<string, string> &toRep
 	map<string, string>::iterator index;
 
 	fileIn.open(fileIn_, ios::in);
-	fileOut.open(fileOut_, ios::out);
-
 	if (fileIn.is_open()) {
+		fileOut.open(fileOut_, ios::out);
 		if (fileOut.is_open()) {
 
 			string line;
@@ -54,7 +53,7 @@ bool fileCompare(string fileName1, string fileName2) {
 	std::ifstream file1(fileName1, ifstream::binary | ifstream::ate);
 	std::ifstream file2(fileName2, ifstream::binary | ifstream::ate);
 
-	if (file1.fail() || file1.fail()) {
+	if (file1.fail() || file2.fail()) {
 		return false;
 	};
 

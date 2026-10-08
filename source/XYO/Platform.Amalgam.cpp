@@ -13,6 +13,8 @@
 
 #include <XYO/Platform/Multithreading/CriticalSection-OS-Linux.cpp>
 #include <XYO/Platform/Multithreading/CriticalSection-OS-Windows.cpp>
+#include <XYO/Platform/Multithreading/ConditionVariable-OS-Linux.cpp>
+#include <XYO/Platform/Multithreading/ConditionVariable-OS-Windows.cpp>
 #include <XYO/Platform/Multithreading/Processor-OS-Linux.cpp>
 #include <XYO/Platform/Multithreading/Processor-OS-Windows.cpp>
 #include <XYO/Platform/Multithreading/Thread-OS-Linux.cpp>

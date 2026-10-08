@@ -39,6 +39,10 @@ namespace XYO::Platform::Multithreading {
 		LeaveCriticalSection(&criticalSection->section);
 	};
 
+	void *CriticalSection::getNative_() {
+		return &criticalSection->section;
+	};
+
 };
 
 #	endif

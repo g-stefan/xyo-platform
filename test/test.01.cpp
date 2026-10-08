@@ -11,7 +11,7 @@ void test() {
 	printf("Platform name %s\n", XYO_PLATFORM_NAME);
 };
 
-int main(int cmdN, char *cmdS[]) {
+int main(int, char *[]) {
 	try {
 
 		test();

@@ -24,14 +24,16 @@ namespace XYO::Platform::Multithreading {
 	CriticalSection::CriticalSection() {
 		criticalSection = new CriticalSection_();
 		if (pthread_mutex_init(&criticalSection->section, nullptr)) {
+			delete criticalSection;
+			criticalSection = nullptr;
 			throw std::runtime_error("pthread_mutex_init");
 		};
 	};
 
-	CriticalSection::~CriticalSection() noexcept(false) {
-		if (pthread_mutex_destroy(&criticalSection->section)) {
-			throw std::runtime_error("pthread_mutex_destroy");
-		};
+	CriticalSection::~CriticalSection() {
+		if (criticalSection) {
+			pthread_mutex_destroy(&criticalSection->section);
+		}
 		delete criticalSection;
 	};
 
@@ -45,6 +47,10 @@ namespace XYO::Platform::Multithreading {
 		if (pthread_mutex_unlock(&criticalSection->section)) {
 			throw std::runtime_error("pthread_mutex_unlock");
 		};
+	};
+
+	void *CriticalSection::getNative_() {
+		return &criticalSection->section;
 	};
 
 };

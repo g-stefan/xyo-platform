@@ -30,13 +30,13 @@ namespace XYO::Platform::Multithreading {
 
 	typedef void (*ThreadProcedure)(void *);
 	typedef void (*ThreadProcess)(void);
-	class Thread_;
+	struct Thread_;
 
 	class Thread {
 			XYO_PLATFORM_DISALLOW_COPY_ASSIGN_MOVE(Thread);
 
 		protected:
-			class Thread_ *thread;
+			struct Thread_ *thread;
 
 		public:
 			XYO_PLATFORM_EXPORT Thread();

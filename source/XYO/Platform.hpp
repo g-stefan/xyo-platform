@@ -17,6 +17,7 @@
 #include <XYO/Platform/Type.hpp>
 #include <XYO/Platform/Multithreading/TAtomic.hpp>
 #include <XYO/Platform/Multithreading/CriticalSection.hpp>
+#include <XYO/Platform/Multithreading/ConditionVariable.hpp>
 #include <XYO/Platform/Multithreading/Processor.hpp>
 #include <XYO/Platform/Multithreading/Thread.hpp>
 
